@@ -23,6 +23,7 @@ export default function App() {
     <div>
       <h1>Images Fetched</h1>
       <p>Adding a paragraph</p>
+      <small>Adding small tag</small>
       {data.map(image => (
         <img key={image.url} src={`${image.url}`} style={{width: "200px"}} alt="" />
       ))}
