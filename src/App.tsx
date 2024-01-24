@@ -1,32 +1,16 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import "./App.css"
+import { useEffect } from "react"
 
-interface Image {
-  url: string
-}
 
 export default function App() {
-  const [data, setData] = useState<Image[]>([])
-
-  const envFile = import.meta.env; // access .env file
-
+  const environment = import.meta.env
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await axios.get(`${envFile.VITE_IMAGES_URL}`)
-      console.log(setData(res.data))
-    }
-    fetchData()
-
+    console.log(environment)
   }, [])
   return (
     <div>
-      <h1>Images Fetched</h1>
-      <p>Adding a paragraph</p>
-      <small>Adding small tag</small>
-      {data.map(image => (
-        <img key={image.url} src={`${image.url}`} style={{width: "200px"}} alt="" />
-      ))}
+      <h2>Handle Different Environments In React</h2>
+      <p>Environment {environment.VITE_ENV}</p>
+      <p>URL {environment.VITE_API_URL}</p>
     </div>
   )
 }
